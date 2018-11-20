@@ -1,27 +1,18 @@
-var button = document.getElementById("btn");
-button.addEventListener("click", myFunction);
+// var button = document.getElementById("btn");
+// button.addEventListener("click", myFunction);
 
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 var inputAnswer = document.getElementById("inputAnswer");
 
 var testButton = document.getElementById("test");
 
-form.addEventListener('submit', testFunction);
-
-function testFunction(e){
-    console.log(inputAnswer.value);
-    e.preventDefault();
-    inputAnswer.value = '';
-
-
-}
-
+form.addEventListener("submit", myFunction);
 
 // button.addEventListener("click", testFunction);
 
 // function testFunction(e){
 //     // console.log(inputAnswer.value)
-//     e.preventDefault();    
+//     e.preventDefault();
 // }
 
 // var button = document.getElementById("btn");
@@ -135,13 +126,19 @@ var arrayFunctions = [
   drawRightHand
 ];
 
-function myFunction() {
+function testFunction(e) {
+  console.log(inputAnswer.value);
+  e.preventDefault();
+  inputAnswer.value = "";
+}
+
+function myFunction(e) {
+  e.preventDefault();
   console.log(inc);
 
-  
-  
-
-  var userWords = prompt("Введите любую букву");
+  var userWords = inputAnswer.value;
+  console.log('Ввел в инпут '+userWords)
+  inputAnswer.value = "";
   if (splitRandomWordArray.indexOf(userWords) != -1) {
     winCounter++;
 
@@ -154,12 +151,8 @@ function myFunction() {
     fillArray.push(userWords);
     console.log("Наполняемый массив " + fillArray);
     if (winCounter == lengthWord) {
-      alert("You win! Загаданное слово: "+randomWord );
+      alert("You win! Загаданное слово: " + randomWord);
     }
-
-
-
-
 
     // rightAnswer++;
     // console.log(randomWord);
@@ -179,8 +172,10 @@ function myFunction() {
       arrayFunctions[inc]();
     }
     if (inc >= arrayFunctions.length) {
-      canvas.style.background='red';
+      canvas.style.background = "red";
       alert("You Lose!");
+      inputAnswer.disabled = 'disabled';
+
     }
   }
 }
